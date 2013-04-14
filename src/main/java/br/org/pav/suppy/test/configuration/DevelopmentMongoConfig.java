@@ -1,4 +1,4 @@
-package org.pav.suppy.test.configuration;
+package br.org.pav.suppy.test.configuration;
 
 import java.net.UnknownHostException;
 
@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.mongodb.Mongo;
-import com.mongodb.MongoException;
 
 @Configuration
 @PropertySource("classpath:development-mongo.properties")
@@ -25,12 +24,12 @@ public class DevelopmentMongoConfig {
 	private String name;
 	
 	@Bean
-	public Mongo mongo() throws UnknownHostException, MongoException {
+	public Mongo mongo() throws UnknownHostException {
 		return new Mongo(host, port);
 	}
 	
 	@Bean
-	public MongoTemplate mongoTemplate() throws UnknownHostException, MongoException {
+	public MongoTemplate mongoTemplate() throws UnknownHostException {
 		return new MongoTemplate(mongo(), name);
 	}
 	
